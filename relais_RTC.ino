@@ -15,6 +15,8 @@ bool isActif=false;
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  
  digitalWrite(5, LOW);    // turn the LED off by making the voltage LOW   
  
    Serial.begin(9600);
@@ -56,8 +58,10 @@ delay(500);
       isActif=true;
 
      digitalWrite(5, HIGH);    // turn the LED off by making the voltage LOW  
+	 digitalWrite(6, HIGH); 
       delay(5000);                // wait for a second
      digitalWrite(5, LOW);    // turn the LED off by making the voltage LOW      
+	 digitalWrite(6, LOW);    // turn the LED off by making the voltage LOW      
     }
     
     if(isActif==true && now.day()!=MONDAY && now.day()!=WEDNESDAY && now.day()!=SATURDAY)
