@@ -1,4 +1,6 @@
 #include <RTClib.h>
+#include <DHT.h>
+
 RTC_DS3231 rtc;
 
 #define SUNDAY    0
@@ -10,6 +12,9 @@ RTC_DS3231 rtc;
 #define SATURDAY  6
 
 bool isActif=false;
+
+dht DHT;
+
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -36,8 +41,17 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
 
-delay(500);
-  DateTime now = rtc.now();
+   delay(500);
+ 
+    DHT.read11(dht_apin);
+    
+    Serial.print("Current humidity = ");
+    Serial.print(DHT.humidity);
+    Serial.print("%  ");
+    Serial.print("temperature = ");
+    Serial.print(DHT.temperature); 
+    Serial.println("C  ");
+	DateTime now = rtc.now();
    Serial.print("Date & Time: ");
     Serial.print(now.year(), DEC);
     Serial.print('/');
